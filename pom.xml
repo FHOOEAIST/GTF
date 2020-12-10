@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>science.aist.gtf</groupId>
     <artifactId>gtf</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <modules>
         <module>core</module>
         <module>graph</module>
@@ -67,7 +67,7 @@
             <connection>scm:git:git@github.com:FHOOEAIST/GTF.git</connection>
             <url>https://github.com/FHOOEAIST/GTF</url>
             <developerConnection>scm:git:git@github.com:FHOOEAIST/GTF.git</developerConnection>
-            <tag>GTF-1.0.0</tag>
+            <tag>HEAD</tag>
         </scm>
         <distributionManagement>
             <repository>
