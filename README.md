@@ -1,4 +1,6 @@
 # GTF - Graph Transformation Framework
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF?ref=badge_shield)
+
 
 The Graph Transformation Framework is as the name suggests, all about graphs and their transformation into desired
 target models. It provides different modules, like ...
@@ -153,6 +155,9 @@ DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF?ref=badge_large)
 
 ## Research
 
