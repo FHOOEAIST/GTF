@@ -1,0 +1,6 @@
+science.aist.gtf.template
+science.aist.gtf.template.exception
+science.aist.gtf.template.impl
+science.aist.gtf.template.impl.condition
+science.aist.gtf.template.impl.handler
+science.aist.gtf.template.impl.renderer

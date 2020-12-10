@@ -1,0 +1,6 @@
+science.aist.gtf.verification.syntactic
+science.aist.gtf.verification.syntactic.constraint
+science.aist.gtf.verification.syntactic.constraint.impl
+science.aist.gtf.verification.syntactic.visitor
+science.aist.gtf.verification.syntactic.visitor.factory
+science.aist.gtf.verification.syntactic.visitor.factory.impl
