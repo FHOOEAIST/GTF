@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020 the original author or authors.
+  ~ DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd ">
+
+    <context:annotation-config/>
+    <context:property-placeholder location="template-config.properties"/>
+
+    <!-- Renderer Conditions -->
+    <bean id="directoryCopyCondition"
+          class="science.aist.gtf.template.impl.condition.DirectoryCopyCondition"/>
+    <bean id="fileCopyCondition" class="science.aist.gtf.template.impl.condition.FileCopyCondition"/>
+    <bean id="directoryCreateCondition"
+          class="science.aist.gtf.template.impl.condition.DirectoryCreateCondition"/>
+    <bean id="instantiateTemplateCondition"
+          class="science.aist.gtf.template.impl.condition.InstantiateTemplateCondition"/>
+    <bean id="graphVizImageCondition"
+          class="science.aist.gtf.template.impl.condition.GraphVizImageCondition"/>
+    <bean id="deleteFileCondition"
+          class="science.aist.gtf.template.impl.condition.DeleteFileCondition"/>
+    <bean id="unzipCondition" class="science.aist.gtf.template.impl.condition.UnzipCondition"/>
+    <bean id="shellCommandCondition"
+          class="science.aist.gtf.template.impl.condition.ShellCommandCondition"/>
+
+    <!-- Handler -->
+    <bean id="ioHandler" class="science.aist.gtf.template.impl.handler.IOHandlerImpl"/>
+
+    <!-- Property Placeholder -->
+    <bean id="propertyPlaceholder" class="org.springframework.util.PropertyPlaceholderHelper">
+        <constructor-arg name="placeholderPrefix" value="${"/>
+        <constructor-arg name="placeholderSuffix" value="}"/>
+    </bean>
+
+    <!-- Template Engines -->
+    <bean id="freemarkerTemplateEngine"
+          class="science.aist.gtf.template.impl.FreemarkerTemplateEngine"/>
+
+    <!-- Renderer -->
+    <bean id="directoryCopyRenderer"
+          class="science.aist.gtf.template.impl.renderer.DirectoryCopyRenderer">
+        <constructor-arg name="condition" ref="directoryCopyCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+        <constructor-arg name="ioHandler" ref="ioHandler"/>
+    </bean>
+    <bean id="directoryCreateRenderer"
+          class="science.aist.gtf.template.impl.renderer.DirectoryCreateRenderer">
+        <constructor-arg name="condition" ref="directoryCreateCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+        <constructor-arg name="ioHandler" ref="ioHandler"/>
+    </bean>
+    <bean id="fileCopyRenderer" class="science.aist.gtf.template.impl.renderer.FileCopyRenderer">
+        <constructor-arg name="condition" ref="fileCopyCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+        <constructor-arg name="ioHandler" ref="ioHandler"/>
+    </bean>
+    <bean id="instantiateTemplateRenderer"
+          class="science.aist.gtf.template.impl.renderer.InstantiateTemplateRenderer">
+        <constructor-arg name="condition" ref="instantiateTemplateCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+        <constructor-arg name="templateEngine" ref="freemarkerTemplateEngine"/>
+    </bean>
+    <bean id="graphVizImageRenderer"
+          class="science.aist.gtf.template.impl.renderer.GraphVizImageRenderer">
+        <constructor-arg name="rendererCondition" ref="graphVizImageCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+    </bean>
+    <bean id="deleteFileRenderer" class="science.aist.gtf.template.impl.renderer.DeleteFileRenderer">
+        <constructor-arg name="rendererCondition" ref="deleteFileCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+    </bean>
+    <bean id="unzipRenderer" class="science.aist.gtf.template.impl.renderer.UnzipRenderer">
+        <constructor-arg name="rendererCondition" ref="unzipCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+        <constructor-arg name="ioHandler" ref="ioHandler"/>
+    </bean>
+    <bean id="shellCommandRenderer"
+          class="science.aist.gtf.template.impl.renderer.ShellCommandRenderer">
+        <constructor-arg name="rendererCondition" ref="shellCommandCondition"/>
+        <constructor-arg name="propertyPlaceholderHelper" ref="propertyPlaceholder"/>
+    </bean>
+
+
+    <!-- Registered Renderers -->
+    <util:list id="registeredRenderers"
+               value-type="science.aist.gtf.template.GeneratorTemplateRenderer">
+        <ref bean="instantiateTemplateRenderer"/>
+        <ref bean="fileCopyRenderer"/>
+        <ref bean="directoryCreateRenderer"/>
+        <ref bean="directoryCopyRenderer"/>
+        <ref bean="graphVizImageRenderer"/>
+        <ref bean="deleteFileRenderer"/>
+        <ref bean="unzipRenderer"/>
+        <ref bean="shellCommandRenderer"/>
+    </util:list>
+
+    <!-- Generator Template -->
+    <bean id="generatorTemplateRenderer"
+          class="science.aist.gtf.template.impl.GeneratorTemplateRendererImpl">
+        <constructor-arg ref="registeredRenderers"/>
+    </bean>
+
+    <!-- Generator Factory -->
+    <bean id="generatorTemplateFactory"
+          class="science.aist.gtf.template.impl.GeneratorTemplateFactoryImpl"/>
+
+    <!-- Template Resources -->
+    <bean id="graphwiztemplate" class="science.aist.gtf.template.TemplateResource">
+        <constructor-arg type="org.springframework.core.io.Resource">
+            <bean class="org.springframework.core.io.ClassPathResource">
+                <constructor-arg value="graphwiz.yaml"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+</beans>

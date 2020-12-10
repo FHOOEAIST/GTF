@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020 the original author or authors.
+  ~ DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="template-config.xml"/>
+
+    <bean id="sampleTemplateResource" class="science.aist.gtf.template.TemplateResource">
+        <constructor-arg>
+            <bean class="org.springframework.core.io.ClassPathResource">
+                <constructor-arg value="sample.yaml"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="graphVizRendering" class="science.aist.gtf.template.TemplateResource">
+        <constructor-arg>
+            <bean class="org.springframework.core.io.ClassPathResource">
+                <constructor-arg value="graphRenderingSample.yaml"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+</beans>

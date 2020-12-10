@@ -1,0 +1,38 @@
+templateName: example
+templateTasks:
+    - name: copyFile
+      type: copyFile
+      properties:
+          src: sampledata/samplefile.empty
+          dest: ${target}/samplefile.empty
+
+    - name: copyDirectory
+      type: copyDirectory
+      properties:
+          src: sampledata
+          dest: ${target}/sampledata
+
+    - name: instantiateTemplate
+      type: instantiateTemplate
+      properties:
+        template: templates/graphWiz.ftl
+        dest: ${target}/graph.graphwiz
+
+    - name: createDirectory
+      type: createDirectory
+      properties:
+        path: ${target}/mkdir
+
+    - name: unzip
+      type: unzip
+      properties:
+        src: compressed.zip
+        dest: ${target}/unzipped
+
+    - name: ping
+      type: shell
+      properties:
+        commands:
+          - ping www.google.at
+        workdir: ${target}
+        timeout: 1000
