@@ -1,0 +1,7 @@
+templateName: graphWizRendering
+templateTasks:
+  - name: graphvizimage
+    type: graphvizimage
+    properties:
+      src: ${target}/sample.viz
+      dest: ${target}/sample.png

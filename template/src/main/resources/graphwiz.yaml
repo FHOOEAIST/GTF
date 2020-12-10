@@ -1,0 +1,7 @@
+templateName: graphWizRendering
+templateTasks:
+  - name: instantiateTemplate
+    type: instantiateTemplate # a template task allows to populate a template with the current context
+    properties:
+      template: classpath:/templates/graphWiz.ftl
+      dest: ${target}/result.graphWiz
