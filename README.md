@@ -1,5 +1,12 @@
 # GTF - Graph Transformation Framework
 
+[![javadoc](https://javadoc.io/badge2/science.aist.gtf/gtf/javadoc.svg)](https://javadoc.io/doc/science.aist.gtf/gtf) 
+[![Maven Central](https://img.shields.io/maven-central/v/science.aist.gtf/gtf.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:"science.aist.gtf")
+[![GitHub release](https://img.shields.io/github/v/release/fhooeaist/gtf.svg)](https://github.com/fhooeaist/gtf/releases)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+[![DOI](https://zenodo.org/badge/303987926.svg)](https://zenodo.org/badge/latestdoi/303987926)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF?ref=badge_shield)
+
 The Graph Transformation Framework is as the name suggests, all about graphs and their transformation into desired
 target models. It provides different modules, like ...
  - **graph**: This module contains all the domain objects, that are required to represent a graph and its state.
@@ -154,9 +161,11 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FFHOOEAIST%2FGTF?ref=badge_large)
+
 ## Research
 
 If you are going to use this project as part of a research paper, we would ask you to reference this project by citing
 it. 
 
-TODO zenodo doi
+[![DOI](https://zenodo.org/badge/303987926.svg)](https://zenodo.org/badge/latestdoi/303987926)
