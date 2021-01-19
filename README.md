@@ -169,3 +169,7 @@ If you are going to use this project as part of a research paper, we would ask y
 it. 
 
 [![DOI](https://zenodo.org/badge/303987926.svg)](https://zenodo.org/badge/latestdoi/303987926)
+
+If you are going to use parts of the verification module, we would ask you to reference:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4450044.svg)](https://doi.org/10.5281/zenodo.4450044)
