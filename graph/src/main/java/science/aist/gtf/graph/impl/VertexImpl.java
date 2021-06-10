@@ -9,7 +9,7 @@
 
 package science.aist.gtf.graph.impl;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 /**
  * <p>Implementation of a Vertex</p>
@@ -20,16 +20,21 @@ import lombok.RequiredArgsConstructor;
  * @author Andreas Pointner
  * @since 1.0
  */
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class VertexImpl<V, E> extends AbstractVertex<V, E> {
     /**
      * The element in the vertex
      */
-    private final V decoratedElement;
+    private V decoratedElement;
 
     @Override
     public V getElement() {
         return decoratedElement;
+    }
+
+    @Override
+    public void setElement(V element) {
+        decoratedElement = element;
     }
 
     /**
@@ -43,4 +48,5 @@ public class VertexImpl<V, E> extends AbstractVertex<V, E> {
                 "decoratedElement=" + decoratedElement +
                 '}';
     }
+
 }

@@ -76,4 +76,9 @@ public class VertexViewImpl<V, E> extends AbstractVertex<V, E> implements Vertex
     public V getElement() {
         return viewedVertex.getElement();
     }
+
+    @Override
+    public void setElement(V element) {
+        throw new UnsupportedOperationException("VertexView does not allow to change the decorated element");
+    }
 }

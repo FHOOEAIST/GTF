@@ -544,6 +544,36 @@ public class GraphBuilderImplTest {
         // Exception
     }
 
+    @Test
+    public void testGraphBuilderMerging() {
+        // given
+        @AllArgsConstructor
+        @Getter
+        class Person {
+            private int id;
+            private String firstname;
+            private String lastname;
+        }
+        Person p1 = new Person(1, "Max", "Mustermann");
+        Person p2 = new Person(2, "Erika", "Mustermann");
+        Person p3 = new Person(1, "Dr. Max", "Mustermann BSc.");
+
+        // when
+        GraphBuilder<Person, Void> graphBuilder = GraphBuilderImpl.create(Person::getId, (x1, x2) -> new Person(x1.getId(), x1.getFirstname(), x2.getLastname()));
+        var graph = graphBuilder.from(p1).to(p2)
+                .from(p3).to(p2)
+                .toGraph();
+
+        // then
+        boolean isPresent = graph.getVertices().stream()
+                .filter(x -> x.getElement().getFirstname().equals("Max"))
+                .filter(x -> x.getElement().getLastname().equals("Mustermann BSc."))
+                .filter(x -> x.getElement().getId() == 1)
+                .filter(x -> x.getElement() != p1)
+                .anyMatch(x -> x.getElement() != p3);
+        Assert.assertTrue(isPresent);
+    }
+
     @AllArgsConstructor
     private static class A {
         private final int key;
