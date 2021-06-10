@@ -36,7 +36,7 @@
         <log4j.version>2.12.1</log4j.version>
         <lombok.version>1.18.12</lombok.version>
         <mockito.version>1.10.19</mockito.version>
-        <seshat.version>1.0.0</seshat.version>
+        <seshat.version>1.1.0</seshat.version>
         <jack.version>2.0.0</jack.version>
         <commons-io.version>2.6</commons-io.version>
         <freemarker.version>2.3.30</freemarker.version>
