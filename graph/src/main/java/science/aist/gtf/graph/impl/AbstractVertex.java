@@ -64,4 +64,11 @@ public abstract class AbstractVertex<V, E> extends MetaTagCollectionImpl impleme
         return this.getEdges().stream().filter(e -> e.getSource().equals(this)).collect(Collectors.toSet());
     }
 
+    /**
+     * Method that allows to change the decorated element - this is especially needed at graph creation time.
+     *
+     * @param element The new decorated element.
+     */
+    public abstract void setElement(V element);
+
 }

@@ -24,6 +24,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -71,6 +72,10 @@ public class GraphBuilderImpl<V, E> implements GraphBuilder<V, E> {
      */
     private final List<Consumer<Graph<V, E>>> creationCallbacks;
     /**
+     * Method which is responsible for merging two different objects with the same key.
+     */
+    private final BinaryOperator<V> merger;
+    /**
      * Flag that indicates if the GraphBuilder allows any further changes. This is set to false, once a graph is
      * created.
      */
@@ -83,8 +88,13 @@ public class GraphBuilderImpl<V, E> implements GraphBuilder<V, E> {
      * @param graphFactory {@link GraphBuilderImpl#graphFactory}
      */
     private GraphBuilderImpl(Function<V, Object> keyMapper, GraphFactory graphFactory) {
+        this(keyMapper, graphFactory, (a, b) -> a);
+    }
+
+    private GraphBuilderImpl(Function<V, Object> keyMapper, GraphFactory graphFactory, BinaryOperator<V> merger) {
         this.keyMapper = keyMapper;
         this.graphFactory = graphFactory;
+        this.merger = merger;
         graphState = graphFactory.createGraphState();
         vertices = new HashMap<>();
         creationCallbacks = new ArrayList<>();
@@ -164,6 +174,33 @@ public class GraphBuilderImpl<V, E> implements GraphBuilder<V, E> {
         return new GraphBuilderImpl<>(keyMapper, graphFactory);
     }
 
+    /**
+     * Creates a new graph builder.
+     *
+     * @param graphFactory specify the graph factory that should be used
+     * @param keyMapper    specify the key mapper that should be used
+     * @param merger       specific the merger that should be used
+     * @param <V>          the type of the decorated vertex value
+     * @param <E>          the type of the decorated edge value
+     * @return a new instance of the GraphBuilder
+     */
+    public static <V, E> GraphBuilder<V, E> create(Function<V, Object> keyMapper, GraphFactory graphFactory, BinaryOperator<V> merger) {
+        return new GraphBuilderImpl<>(keyMapper, graphFactory, merger);
+    }
+
+    /**
+     * Creates a new graph builder.
+     *
+     * @param keyMapper    specify the key mapper that should be used
+     * @param merger       specific the merger that should be used
+     * @param <V>          the type of the decorated vertex value
+     * @param <E>          the type of the decorated edge value
+     * @return a new instance of the GraphBuilder
+     */
+    public static <V, E> GraphBuilder<V, E> create(Function<V, Object> keyMapper, BinaryOperator<V> merger) {
+        return new GraphBuilderImpl<>(keyMapper, GraphFactoryFactory.getDefaultFactory(), merger);
+    }
+
     @Override
     public GraphStateAccessor<V, E> getGraphState() {
         return graphState.readonly();
@@ -174,7 +211,11 @@ public class GraphBuilderImpl<V, E> implements GraphBuilder<V, E> {
 
         Object key = keyMapper.apply(value);
         if (vertices.containsKey(key)) {
-            return vertices.get(key);
+            Vertex<V, E> vertex = vertices.get(key);
+            if (vertex instanceof AbstractVertex && vertex.getElement() != value) {
+                ((AbstractVertex<V, E>) vertex).setElement(merger.apply(vertex.getElement(), value));
+            }
+            return vertex;
         }
 
         // Check only needs to be performed on writing operations, the above case is readonly.
