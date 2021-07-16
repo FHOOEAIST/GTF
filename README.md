@@ -173,3 +173,8 @@ it.
 If you are going to use parts of the verification module, we would ask you to reference:
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4450044.svg)](https://doi.org/10.5281/zenodo.4450044)
+
+If you are going to use parts of the transformation module, we would ask you to reference:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5109311.svg)](https://doi.org/10.5281/zenodo.5109311)
+
