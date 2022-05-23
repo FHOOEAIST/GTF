@@ -15,7 +15,7 @@ import science.aist.gtf.graph.GraphState;
 import science.aist.gtf.graph.MetaTag;
 import science.aist.jack.general.util.CastUtils;
 
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 
 /**
  * <p>Test class for {@link VertexViewImpl}</p>

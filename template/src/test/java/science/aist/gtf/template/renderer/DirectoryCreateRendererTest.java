@@ -22,7 +22,7 @@ import science.aist.gtf.template.impl.renderer.DirectoryCreateRenderer;
 import science.aist.gtf.transformation.renderer.condition.RendererCondition;
 import science.aist.jack.general.util.CastUtils;
 
-import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -74,7 +74,7 @@ public class DirectoryCreateRendererTest extends AbstractTestNGSpringContextTest
     public void testDirectoryCreateRendererUseFailed() {
         // given
         IOHandler<GeneratorTemplate> failed = CastUtils.cast(Mockito.mock(IOHandler.class));
-        Mockito.doThrow(IOException.class).when(failed).handleDirectoryCreate(Mockito.any(), Mockito.any());
+        Mockito.doThrow(UncheckedIOException.class).when(failed).handleDirectoryCreate(Mockito.any(), Mockito.any());
         GeneratorTemplate template = generatorTemplateFactory.loadGeneratorTemplate(templateResource);
         Properties properties = new Properties();
         properties.setProperty("target", "target");
