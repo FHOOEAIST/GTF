@@ -39,7 +39,7 @@ public class EdgeViewImplTest {
         // then
         Mockito.verify(graphState, Mockito.times(1)).getSource(ev);
         Mockito.verifyNoMoreInteractions(graphState);
-        Mockito.verifyZeroInteractions(edge);
+        Mockito.verifyNoInteractions(edge);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class EdgeViewImplTest {
         // then
         Mockito.verify(graphState, Mockito.times(1)).getTarget(ev);
         Mockito.verifyNoMoreInteractions(graphState);
-        Mockito.verifyZeroInteractions(edge);
+        Mockito.verifyNoInteractions(edge);
     }
 
     @Test

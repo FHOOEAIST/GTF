@@ -12,7 +12,7 @@ package science.aist.gtf.graph.builder.impl;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -151,7 +151,7 @@ public class GraphBuilderImplTest {
         // given
         Vertex<Object, Object> mockVertex = CastUtils.cast(Mockito.mock(Vertex.class));
         GraphFactory mockFactory = Mockito.mock(GraphFactory.class);
-        Mockito.when(mockFactory.createVertex(Matchers.any())).thenReturn(mockVertex);
+        Mockito.when(mockFactory.createVertex(ArgumentMatchers.any())).thenReturn(mockVertex);
         Mockito.when(mockFactory.createGraphState()).thenReturn(new GraphStateImpl<>());
 
         // when
@@ -169,8 +169,8 @@ public class GraphBuilderImplTest {
         Edge<Object, Object> mockEdge = CastUtils.cast(Mockito.mock(Edge.class));
         GraphFactory mockFactory = Mockito.mock(GraphFactory.class);
         Mockito.when(mockFactory.createGraphState()).thenReturn(new GraphStateImpl<>());
-        Mockito.when(mockFactory.createVertex(Matchers.any())).thenAnswer(x -> new VertexImpl<>(x.getArguments()[0]));
-        Mockito.when(mockFactory.createEdge(Matchers.any())).thenReturn(mockEdge);
+        Mockito.when(mockFactory.createVertex(ArgumentMatchers.any())).thenAnswer(x -> new VertexImpl<>(x.getArguments()[0]));
+        Mockito.when(mockFactory.createEdge(ArgumentMatchers.any())).thenReturn(mockEdge);
 
         // when
         GraphBuilderImpl.<String, Void>create(mockFactory)

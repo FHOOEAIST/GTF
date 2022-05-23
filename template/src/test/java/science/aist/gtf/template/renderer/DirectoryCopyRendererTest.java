@@ -23,7 +23,7 @@ import science.aist.gtf.template.impl.renderer.DirectoryCopyRenderer;
 import science.aist.gtf.transformation.renderer.condition.RendererCondition;
 import science.aist.jack.general.util.CastUtils;
 
-import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -76,7 +76,7 @@ public class DirectoryCopyRendererTest extends AbstractTestNGSpringContextTests 
     public void testDirectoryCopyTemplateRendererUseFailed() {
         // given
         IOHandler<GeneratorTemplate> failed = CastUtils.cast(Mockito.mock(IOHandler.class));
-        Mockito.doThrow(IOException.class).when(failed).handleDirectoryCopy(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.anyBoolean());
+        Mockito.doThrow(UncheckedIOException.class).when(failed).handleDirectoryCopy(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.anyBoolean());
         GeneratorTemplate template = generatorTemplateFactory.loadGeneratorTemplate(templateResource);
         Properties properties = new Properties();
         properties.setProperty("target", "target");
