@@ -4,15 +4,15 @@
 
 ### New Features
 
-- (10)[https://github.com/FHOOEAIST/GTF/issues/10] - Added the possibility to merge existing vertices in the graph builder
+- [10](https://github.com/FHOOEAIST/GTF/issues/10) - Added the possibility to merge existing vertices in the graph builder
 
 ### Bug Fix
 
-- (7)[https://github.com/FHOOEAIST/GTF/issues/7] - Fixed generation of Javadoc under java 11
+- [7](https://github.com/FHOOEAIST/GTF/issues/7) - Fixed generation of Javadoc under java 11
 
 ### Dependencies
 
-- (15)[https://github.com/FHOOEAIST/GTF/issues/15] - Updated dependencies
+- [15](https://github.com/FHOOEAIST/GTF/issues/15) - Updated dependencies
   - TestNg from 6.14.3 to 7.5
   - Lombok from 1.18.12 to 1.18.24
   - Mockito from 1.10.19 to 4.5.1
