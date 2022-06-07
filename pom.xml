@@ -58,7 +58,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 
         <!-- sonar variables -->
-        <jacoco.plugin.version>0.8.4</jacoco.plugin.version>
+        <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
         <sonar.java.libraries>${project.build.directory}/dependency</sonar.java.libraries>
         <sonar-jacoco-listeners.version>5.14.0.18788</sonar-jacoco-listeners.version>
     </properties>
