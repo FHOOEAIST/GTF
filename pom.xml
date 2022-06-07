@@ -55,7 +55,7 @@
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
         <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
 
         <!-- sonar variables -->
         <jacoco.plugin.version>0.8.4</jacoco.plugin.version>
