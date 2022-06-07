@@ -53,7 +53,7 @@
         <wagon-webdav-jackrabbit.version>3.3.4</wagon-webdav-jackrabbit.version>
         <maven-clover-plugin.version>2.4</maven-clover-plugin.version>
         <maven-project-info-reports-plugin.version>3.3.0</maven-project-info-reports-plugin.version>
-        <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
+        <maven-scm-publish-plugin.version>3.1.0</maven-scm-publish-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
 
