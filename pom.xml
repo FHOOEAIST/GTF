@@ -49,7 +49,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons-fileupload.version>1.4</commons-fileupload.version>
 
-        <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
+        <maven-site-plugin.version>3.12.0</maven-site-plugin.version>
         <wagon-webdav-jackrabbit.version>3.3.4</wagon-webdav-jackrabbit.version>
         <maven-clover-plugin.version>2.4</maven-clover-plugin.version>
         <maven-project-info-reports-plugin.version>3.3.0</maven-project-info-reports-plugin.version>
