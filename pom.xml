@@ -41,7 +41,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <freemarker.version>2.3.31</freemarker.version>
         <jackson.version>2.13.3</jackson.version>
-        <spring.version>5.3.20</spring.version>
+        <spring.version>5.3.21</spring.version>
         <graphviz-java.version>0.18.1</graphviz-java.version>
         <graalvm-js.version>22.1.0.1</graalvm-js.version>
 
