@@ -1,5 +1,11 @@
 # Changelog for GTF
 
+## 2.0.1 (2022-10-10)
+
+### Bug Fix
+
+ - [41](https://github.com/FHOOEAIST/GTF/issues/41) - Fixed creation of self referencing edges
+
 ## 2.0.0 (2022-05-23)
 
 ### New Features

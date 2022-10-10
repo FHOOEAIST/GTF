@@ -341,6 +341,7 @@ public class GraphBuilderImpl<V, E> implements GraphBuilder<V, E> {
     private Edge<V, E> createEdge(Vertex<V, E> source, Vertex<V, E> target, E value) {
         return graphState.getEdges(source)
                 .stream()
+                .filter(e -> source == e.getSource())
                 .filter(e -> target == e.getTarget())
                 .findAny()
                 .map(edge -> {
