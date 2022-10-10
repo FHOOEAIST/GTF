@@ -574,6 +574,20 @@ public class GraphBuilderImplTest {
         Assert.assertTrue(isPresent);
     }
 
+    @Test
+    public void testSelfReferencingEdgeCreation() {
+        // given
+        GraphBuilder<String, Void> graphBuilder = GraphBuilderImpl.create();
+
+        // when
+        Graph<String, Void> graph = graphBuilder.from("1").to("2")
+                .from("2").to("2")
+                .toGraph();
+
+        // then
+        Assert.assertEquals(graph.getEdges().size(), 2);
+    }
+
     @AllArgsConstructor
     private static class A {
         private final int key;
